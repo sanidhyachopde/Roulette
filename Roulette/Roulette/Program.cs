@@ -203,7 +203,7 @@ namespace Roulette
         /// <returns></returns>
         private static int WinningNumber()
         {
-            Random r = new Random(); //Padh kaise kaam karta hai
+            Random r = new Random();
             return r.Next(-1, 36);
         }
     }
