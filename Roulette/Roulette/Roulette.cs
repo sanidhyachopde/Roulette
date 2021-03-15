@@ -230,7 +230,7 @@ namespace Roulette
         private static int WinningNumber()
         {
             Random r = new Random();
-            return r.Next(-1, 36);
+            return r.Next(-1, 37);
         }
     }
 }
