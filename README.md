@@ -1,6 +1,6 @@
 # Roulette
 
-This program simulates the game of roulette.
+This is a console application which simulates the game of roulette.
 
 Steps are as follows:
 
