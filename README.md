@@ -18,7 +18,7 @@ Steps are as follows:
   5) Low (1-18) / High (19-36) (payoff: 1 to 1)
   6) Exit Game
  
-4)Bet is placed and the roulette spins to seleect a winning number between 00 and 36.
+4)Bet is placed and the roulette spins to select a winning number between 00 and 36.
 
 5)If the users bet condition is satisfied then the user wins according to the payoff associated with the bet.
 
