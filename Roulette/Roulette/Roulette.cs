@@ -14,13 +14,13 @@ namespace Roulette
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            int bankroll = 0;
-            int bet = 0;
+            double bankroll;
+            double bet;
 
             Console.WriteLine("Enter inital amount: ");
             do
             {
-                bankroll = int.Parse(Console.ReadLine()); //Initial amount is taken as input from the users.
+                bankroll = double.Parse(Console.ReadLine()); //Initial amount is taken as input from the users.
                 if (bankroll <= 0)
                 {
                     Console.WriteLine("\r\nEnter a valid initial amount");
@@ -33,7 +33,7 @@ namespace Roulette
                 Console.WriteLine("\r\nEnter the bet amount");
                 do
                 {                    
-                    bet = int.Parse(Console.ReadLine()); //Users are asked to input the amount they want to bet.
+                    bet = double.Parse(Console.ReadLine()); //Users are asked to input the amount they want to bet.
                     if (bet <= 0 || bet > bankroll)
                     {
                         Console.WriteLine("\r\nEnter a valid bet amount");
@@ -93,9 +93,9 @@ namespace Roulette
         /// <param name="bankroll">Users total bankroll</param>
         /// <param name="bet">Bet amount placed by the user</param>
         /// <returns></returns>
-        private static int PlaceBet(String choice, int bankroll, int bet)
+        private static double PlaceBet(String choice, double bankroll, double bet)
         {
-            int enteredNumber = 0;
+            int enteredNumber;
 
             switch (choice.ToString()) //Switch statements are used to switch between the selected menu options.
             {
@@ -145,9 +145,9 @@ namespace Roulette
         /// <param name="input">Input entered by the user</param>
         /// <param name="bet">Bet amount entered by the user</param>
         /// <returns></returns>
-        private static int SpinRoulette(String cases, String input, int bet)
+        private static double SpinRoulette(String cases, String input, double bet)
         {
-            int winningAmount = 0;
+            double winningAmount = 0;
 
             int selectedNumber = WinningNumber(); // A winning number between 00 and 36 is generated randomly. 
 
