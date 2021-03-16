@@ -171,10 +171,6 @@ namespace Roulette
                     {
                         winningAmount = bet + bet; //Payoff 1 to 1
                     }
-                    else
-                    {
-                        Console.WriteLine("\r\nYou Lost: $" + bet);
-                    }
                     break;
                 case "2":
                     if (selectedNumber == 0 || selectedNumber == -1)
@@ -185,19 +181,11 @@ namespace Roulette
                     {
                         winningAmount = bet + bet; //Payoff 1 to 1
                     }
-                    else
-                    {
-                        Console.WriteLine("\r\nYou Lost: $" + bet);
-                    }
                     break;
                 case "3":
                     if (selectedNumber == int.Parse(input))
                     {
                         winningAmount = bet + 35 * bet; //Payoff 35 to 1
-                    }
-                    else
-                    {
-                        Console.WriteLine("\r\nYou Lost: $" + bet);
                     }
                     break;
                 case "4":
@@ -213,10 +201,6 @@ namespace Roulette
                     {
                         winningAmount = bet + 2 * bet; //Payoff 2 to 1
                     }
-                    else
-                    {
-                        Console.WriteLine("\r\nYou Lost: $" + bet);
-                    }
                     break;
                 case "5":
                     if (input.Equals("low") && selectedNumber > 0 && selectedNumber < 19)
@@ -227,14 +211,13 @@ namespace Roulette
                     {
                         winningAmount = bet + bet; //Payoff 1 to 1
                     }
-                    else
-                    {
-                        Console.WriteLine("\r\nYou Lost: $" + bet);
-                    }
                     break;
             }
             if (winningAmount > 0)
                 Console.WriteLine("\r\nCongratulations! You Won: $" + winningAmount);
+            else
+                Console.WriteLine("\r\nYou Lost: $" + bet);
+
             return winningAmount;
         }
 
