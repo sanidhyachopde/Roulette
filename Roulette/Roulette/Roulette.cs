@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 
 namespace Roulette
 {
@@ -42,7 +41,7 @@ namespace Roulette
 
                 bankroll -= bet;
 
-                String choice = DisplayMenu(); //Betting menu is displayed and users bet is received.
+                string choice = DisplayMenu(); //Betting menu is displayed and users bet is received.
 
                 bankroll = PlaceBet(choice, bankroll, bet); //Bet is placed and bankroll is updated with winnings or loss.
 
@@ -72,7 +71,7 @@ namespace Roulette
         /// This method displays the bet menu
         /// </summary>
         /// <returns></returns>
-        private static String DisplayMenu()
+        private static string DisplayMenu()
         {
             Console.WriteLine("\r\nSelect a bet:"); //Users are asked to select a bet from the following menu.
             Console.WriteLine("1) Red/Black");
@@ -93,11 +92,11 @@ namespace Roulette
         /// <param name="bankroll">Users total bankroll</param>
         /// <param name="bet">Bet amount placed by the user</param>
         /// <returns></returns>
-        private static double PlaceBet(String choice, double bankroll, double bet)
+        private static double PlaceBet(string choice, double bankroll, double bet)
         {
             int enteredNumber;
 
-            switch (choice.ToString()) //Switch statements are used to switch between the selected menu options.
+            switch (choice) //Switch statements are used to switch between the selected menu options.
             {
                 case "1":
                     Console.WriteLine("\r\nType Red or Black: ");
@@ -145,7 +144,7 @@ namespace Roulette
         /// <param name="input">Input entered by the user</param>
         /// <param name="bet">Bet amount entered by the user</param>
         /// <returns></returns>
-        private static double SpinRoulette(String cases, String input, double bet)
+        private static double SpinRoulette(string cases, string input, double bet)
         {
             double winningAmount = 0;
 
@@ -172,6 +171,10 @@ namespace Roulette
                     {
                         winningAmount = bet + bet; //Payoff 1 to 1
                     }
+                    else
+                    {
+                        Console.WriteLine("\r\nYou Lost: $" + bet);
+                    }
                     break;
                 case "2":
                     if (selectedNumber == 0 || selectedNumber == -1)
@@ -182,11 +185,19 @@ namespace Roulette
                     {
                         winningAmount = bet + bet; //Payoff 1 to 1
                     }
+                    else
+                    {
+                        Console.WriteLine("\r\nYou Lost: $" + bet);
+                    }
                     break;
                 case "3":
                     if (selectedNumber == int.Parse(input))
                     {
                         winningAmount = bet + 35 * bet; //Payoff 35 to 1
+                    }
+                    else
+                    {
+                        Console.WriteLine("\r\nYou Lost: $" + bet);
                     }
                     break;
                 case "4":
@@ -202,6 +213,10 @@ namespace Roulette
                     {
                         winningAmount = bet + 2 * bet; //Payoff 2 to 1
                     }
+                    else
+                    {
+                        Console.WriteLine("\r\nYou Lost: $" + bet);
+                    }
                     break;
                 case "5":
                     if (input.Equals("low") && selectedNumber > 0 && selectedNumber < 19)
@@ -211,6 +226,10 @@ namespace Roulette
                     else if (input.Equals("high") && selectedNumber > 18 && selectedNumber < 37)
                     {
                         winningAmount = bet + bet; //Payoff 1 to 1
+                    }
+                    else
+                    {
+                        Console.WriteLine("\r\nYou Lost: $" + bet);
                     }
                     break;
             }
