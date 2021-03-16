@@ -42,7 +42,7 @@ namespace Roulette
 
                 bankroll -= bet;
 
-                StringBuilder choice = DisplayMenu(); //Betting menu is displayed and users bet is received.
+                String choice = DisplayMenu(); //Betting menu is displayed and users bet is received.
 
                 bankroll = PlaceBet(choice, bankroll, bet); //Bet is placed and bankroll is updated with winnings or loss.
 
@@ -72,7 +72,7 @@ namespace Roulette
         /// This method displays the bet menu
         /// </summary>
         /// <returns></returns>
-        private static StringBuilder DisplayMenu()
+        private static String DisplayMenu()
         {
             Console.WriteLine("\r\nSelect a bet:"); //Users are asked to select a bet from the following menu.
             Console.WriteLine("1) Red/Black");
@@ -83,9 +83,7 @@ namespace Roulette
             Console.WriteLine("6) Exit Game");
             Console.Write("\r\nSelect an option: ");
 
-            StringBuilder sb = new StringBuilder();
-            sb.Append(Console.ReadLine());
-            return sb;
+            return Console.ReadLine();
         }
 
         /// <summary>
@@ -95,7 +93,7 @@ namespace Roulette
         /// <param name="bankroll">Users total bankroll</param>
         /// <param name="bet">Bet amount placed by the user</param>
         /// <returns></returns>
-        private static int PlaceBet(StringBuilder choice, int bankroll, int bet)
+        private static int PlaceBet(String choice, int bankroll, int bet)
         {
             int enteredNumber = 0;
 
@@ -103,15 +101,11 @@ namespace Roulette
             {
                 case "1":
                     Console.WriteLine("\r\nType Red or Black: ");
-                    choice.Clear();
-                    choice.Append(Console.ReadLine());
-                    bankroll += SpinRoulette("1", choice, bet); //The bankroll is updated with the amount won/lost in the Red/Black bet.
+                    bankroll += SpinRoulette("1", Console.ReadLine(), bet); //The bankroll is updated with the amount won/lost in the Red/Black bet.
                     break;
                 case "2":
                     Console.WriteLine("\r\nType Odd or Even: ");
-                    choice.Clear();
-                    choice.Append(Console.ReadLine());
-                    bankroll += SpinRoulette("2", choice, bet); //The bankroll is updated with the amount won/lost in the Odd/Even bet.
+                    bankroll += SpinRoulette("2", Console.ReadLine(), bet); //The bankroll is updated with the amount won/lost in the Odd/Even bet.
                     break;
                 case "3":
                     Console.WriteLine("\r\nEnter a number: ");
@@ -124,21 +118,15 @@ namespace Roulette
                         }
                     } while (enteredNumber < 0 || enteredNumber > 36);
 
-                    choice.Clear();
-                    choice.Append(enteredNumber);
-                    bankroll += SpinRoulette("3", choice, bet); //The bankroll is updated with the amount won/lost in the Single Number bet.
+                    bankroll += SpinRoulette("3", enteredNumber.ToString(), bet); //The bankroll is updated with the amount won/lost in the Single Number bet.
                     break;
                 case "4":
                     Console.WriteLine("\r\nType First or Second or Third: ");
-                    choice.Clear();
-                    choice.Append(Console.ReadLine());
-                    bankroll += SpinRoulette("4", choice, bet); //The bankroll is updated with the amount won/lost in the First 12/Second 12/Third 12 bet.
+                    bankroll += SpinRoulette("4", Console.ReadLine(), bet); //The bankroll is updated with the amount won/lost in the First 12/Second 12/Third 12 bet.
                     break;
                 case "5":
                     Console.WriteLine("\r\nType Low or High: ");
-                    choice.Clear();
-                    choice.Append(Console.ReadLine());
-                    bankroll += SpinRoulette("5", choice, bet); //The bankroll is updated with the amount won/lost in the Low/High bet.
+                    bankroll += SpinRoulette("5", Console.ReadLine(), bet); //The bankroll is updated with the amount won/lost in the Low/High bet.
                     break;
                 case "6":
                     Console.WriteLine("\r\n*******************");
@@ -157,7 +145,7 @@ namespace Roulette
         /// <param name="input">Input entered by the user</param>
         /// <param name="bet">Bet amount entered by the user</param>
         /// <returns></returns>
-        private static int SpinRoulette(String cases, StringBuilder input, int bet)
+        private static int SpinRoulette(String cases, String input, int bet)
         {
             int winningAmount = 0;
 
@@ -196,7 +184,7 @@ namespace Roulette
                     }
                     break;
                 case "3":
-                    if (selectedNumber == int.Parse(input.ToString()))
+                    if (selectedNumber == int.Parse(input))
                     {
                         winningAmount = bet + 35 * bet; //Payoff 35 to 1
                     }
