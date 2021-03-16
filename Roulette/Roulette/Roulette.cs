@@ -18,7 +18,15 @@ namespace Roulette
             int bet = 0;
 
             Console.WriteLine("Enter inital amount: ");
-            bankroll = int.Parse(Console.ReadLine()); //Initial amount is taken as input from the users.
+            do
+            {
+                bankroll = int.Parse(Console.ReadLine()); //Initial amount is taken as input from the users.
+                if (bankroll <= 0)
+                {
+                    Console.WriteLine("\r\nEnter a valid initial amount");
+                }
+            } while (bankroll <= 0);
+            
 
             while (bankroll != 0)
             {
